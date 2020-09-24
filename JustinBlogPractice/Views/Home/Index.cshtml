@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BlogPost>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<html>
+<head>
+    <title>Justin's Blog</title>
+</head>
+
+<body>
+    <div>
+        <h1>Justin's Blogs</h1>
+        <button asp-action="NewBlog">New Blog</button>
+        <table class="table table-bordered table-striped table-sm">
+
+            <thead>
+                <tr><th>Title</th> <th>PostedOn</th> <th>EditedOn</th></tr>
+            </thead>
+            <tbody>
+                @foreach (BlogPost B in Model)
+                {
+                    <tr>
+                        <td> <a asp-route-ID="@B.ID" asp-action="Detail">@B.Title</a></td>
+                        <td>@B.PostedOn</td>
+                        <td>@B.EditedOn</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
